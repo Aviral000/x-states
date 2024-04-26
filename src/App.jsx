@@ -85,7 +85,8 @@ export default function App() {
             </select>
 
             <div>
-                Selected: {selectedCountry} - {selectedState} - {selectedCity}
+                {selectedCountry && selectedCity && selectedCity && (
+                    <div>You selected: {selectedCity}, {selectedState}, {selectedCountry}</div> )}
             </div>
         </div>
     </div>
