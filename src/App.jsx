@@ -14,21 +14,29 @@ export default function App() {
         const response = await axios.get("https://crio-location-selector.onrender.com/countries");
         setCountries(response.data);
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
   }
 
   const apiState = async(selectedCountry) => {
-    if(selectedCountry) {
-        const response = await axios.get(`https://crio-location-selector.onrender.com/country=${selectedCountry}/states`)
-        setStates(response.data);
+    try {
+        if(selectedCountry) {
+            const response = await axios.get(`https://crio-location-selector.onrender.com/country=${selectedCountry}/states`)
+            setStates(response.data);
+        }
+    } catch (error) {
+        console.error(error);
     }
   }
 
   const apiCity = async(selectedCountry ,selectedState) => {
-    if(selectedState) {
-        const response = await axios.get(`https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${selectedState}/cities`)
-        setCities(response.data);
+    try {
+        if(selectedState) {
+            const response = await axios.get(`https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${selectedState}/cities`)
+            setCities(response.data);
+        }
+    } catch (error) {
+        console.error(error);
     }
   }
 
