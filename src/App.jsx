@@ -10,8 +10,12 @@ export default function App() {
   const [selectedCity, setSelectedCity] = useState("");
 
   const apiCountry = async() => {
-    const response = await axios.get("https://crio-location-selector.onrender.com/countries");
-    setCountries(response.data);
+    try {
+        const response = await axios.get("https://crio-location-selector.onrender.com/countries");
+        setCountries(response.data);
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   const apiState = async(selectedCountry) => {
